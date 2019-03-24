@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>                                            
+                                                                                      
+<!DOCTYPE sqlMap                                                                      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"                              
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">                                   
+                                                                                      
+<sqlMap namespace="COM_SAMPLE_MEMBER_CUD_MEMBERCUDDAO">                                                       
+                                                                                      
+    <!-- 샘플그룹[SAMPLE_GROUP] VO -->                                                                
+    <typeAlias alias="sampleGroupCudVo" type="com.sample.member.cud.vo.SampleGroupCudVo"/>                       
+                                                                                   
+    <!--  샘플그룹[SAMPLE_GROUP] NEW키값 조회 -->                                                        
+    <select id="selectSampleGroupNewKey" parameterClass="sampleGroupCudVo" resultClass="sampleGroupCudVo">       
+        SELECT                                                                        
+            LPAD(( IF( ISNULL(MAX(GROUP_ID)), 0, MAX(GROUP_ID) )+1), 30, '0') GROUP_ID 
+        FROM                                                                          
+            SAMPLE_GROUP                                                                       
+        WHERE 1=1                                                                     
+    </select>                                                                       
+                                                                                   
+    <!--  샘플그룹[SAMPLE_GROUP] 입력 -->                                                             
+    <insert id="insertSampleGroup" parameterClass="sampleGroupCudVo" >                             
+        INSERT INTO SAMPLE_GROUP (                                                            
+            <isNotEmpty removeFirstPrepend="true" >
+                <isNotEmpty prepend="," property="GROUP_ID">GROUP_ID</isNotEmpty>
+                <isNotEmpty prepend="," property="NAME">NAME</isNotEmpty>
+                <isNotEmpty prepend="," property="INPUT_DT">INPUT_DT</isNotEmpty>
+            </isNotEmpty>
+
+        ) VALUES (                                                                    
+            <isNotEmpty removeFirstPrepend="true" >
+                <isNotEmpty prepend="," property="GROUP_ID">#GROUP_ID#</isNotEmpty>
+                <isNotEmpty prepend="," property="NAME">#NAME#</isNotEmpty>
+                <isNotEmpty prepend="," property="INPUT_DT">STR_TO_DATE( #INPUT_DT#, '%Y%m%d%H%i%s' )</isNotEmpty>
+            </isNotEmpty>
+
+        )                                                                             
+    </insert>                                                                       
+                                                                                   
+    <!--  샘플그룹[SAMPLE_GROUP] 수정 -->                                                             
+    <update id="updateSampleGroup" parameterClass="sampleGroupCudVo" >                             
+        UPDATE SAMPLE_GROUP                                                                   
+        SET                                                                           
+            <isNotEmpty removeFirstPrepend="true" >
+                <isNotEmpty prepend=","  property="GROUP_ID">
+                GROUP_ID = #GROUP_ID#
+                </isNotEmpty>
+                <isNotEmpty prepend=","  property="NAME">
+                NAME = #NAME#
+                </isNotEmpty>
+                <isNotEmpty prepend=","  property="INPUT_DT">
+                INPUT_DT = STR_TO_DATE( #INPUT_DT#, '%Y%m%d%H%i%s' )
+                </isNotEmpty>
+            </isNotEmpty>
+        WHERE 1=1                                                                        
+            AND GROUP_ID = #GROUP_ID#
+    </update>                                                                       
+                                                                                   
+    <!--  샘플그룹[SAMPLE_GROUP] 삭제 -->                                                             
+    <delete id="deleteSampleGroup" parameterClass="sampleGroupCudVo" >                             
+        DELETE FROM SAMPLE_GROUP                                                              
+        WHERE 1=1                                                                         
+            AND GROUP_ID = #GROUP_ID#
+    </delete>                                                                       
+                                                                                   
+</sqlMap>                                                                             
+
