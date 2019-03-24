@@ -3,9 +3,9 @@
 /******************************************* 변수 선언 시작 *******************************************/        	  
 String                                                         RETURN_CD;                                       
 java.util.HashMap                                              returnObj;                                       
-java.util.List<com.sample.dept.vo.SampleDeptVo>                  returnVoList;                       
-com.sample.dept.vo.SampleDeptVo                                  sampleDeptVo;                
-com.common.utils.PageUtil                                      pageUtil;                                        
+java.util.List<net.dstone.sample.dept.vo.SampleDeptVo>                  returnVoList;                       
+net.dstone.sample.dept.vo.SampleDeptVo                                  sampleDeptVo;                
+net.dstone.common.utils.PageUtil                                      pageUtil;                                        
 /******************************************* 변수 선언 끝 *********************************************/           
                                                                                                                 
 /******************************************* 변수 정의 시작 *******************************************/           
@@ -15,8 +15,8 @@ sampleDeptVo            = null;
 returnVoList        = null;                                                                          
 pageUtil            = null;                                                                          
 if(returnObj != null){                                                                                          
-    returnVoList    = (java.util.List<com.sample.dept.vo.SampleDeptVo>)returnObj.get("returnObj"); 
-    pageUtil        = (com.common.utils.PageUtil)returnObj.get("pageUtil");                                   
+    returnVoList    = (java.util.List<net.dstone.sample.dept.vo.SampleDeptVo>)returnObj.get("returnObj"); 
+    pageUtil        = (net.dstone.common.utils.PageUtil)returnObj.get("pageUtil");                                   
 }                                                                                                             
 /******************************************* 변수 정의 끝 *********************************************/        
 %>                                                                                                              

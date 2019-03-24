@@ -22,7 +22,7 @@
 	<!-- ################### AspectJ Configuration START ####################### -->
 	<aop:aspectj-autoproxy />
 	<aop:config proxy-target-class="true"></aop:config>
-	<bean id="executionLoggingAspect" class="com.common.spring.aop.ExecutionLoggingAspect">
+	<bean id="executionLoggingAspect" class="net.dstone.common.spring.aop.ExecutionLoggingAspect">
 		<property name="loggerName" value="${log4j.logger.executionLogger}"></property>
 	</bean>
 	<!-- ################### AspectJ Configuration END ######################### -->

@@ -11,7 +11,7 @@
 	<!-- 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>com.common.filter.EncodingFilter</filter-class>
+		<filter-class>net.dstone.common.filter.EncodingFilter</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
@@ -77,14 +77,14 @@
 	<!-- Initializer -->
 	<servlet>
 		<servlet-name>Initializer</servlet-name>
-		<servlet-class>com.common.utils.InitServlet</servlet-class>
+		<servlet-class>net.dstone.common.utils.InitServlet</servlet-class>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	
 	<!-- File DownLoad -->
 	<servlet>
 		<servlet-name>File DownLoad</servlet-name>
-		<servlet-class>com.common.utils.FileDownUtil</servlet-class>
+		<servlet-class>net.dstone.common.utils.FileDownUtil</servlet-class>
 		<load-on-startup>3</load-on-startup>
 	</servlet>
 	<servlet-mapping>
@@ -103,7 +103,7 @@
 		</init-param>
 		<init-param>
        		<param-name>com.sun.jersey.config.property.packages</param-name>
-     		<param-value>com.sample.biz</param-value>
+     		<param-value>net.dstone.sample.biz</param-value>
      	</init-param>
 		<init-param>
             <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>

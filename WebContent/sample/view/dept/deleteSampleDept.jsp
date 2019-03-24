@@ -20,7 +20,7 @@ returnObj           = (Boolean)request.getAttribute("returnObj");
 	function init(){                                                                                             
 		<%                                                                                                       
 		if( RETURN_CD != null ){                                                                                 
-			if(RETURN_CD.equals(com.common.biz.BaseController.RETURN_SUCCESS)){                                                                                   
+			if(RETURN_CD.equals(net.dstone.common.biz.BaseController.RETURN_SUCCESS)){                                                                                   
 		%>	                                                                                                     
 			alert('SUCCESS');                                                                                    
 		<%                                                                                                       

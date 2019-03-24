@@ -2,12 +2,12 @@
 <%                                                                                                              
 /******************************************* 변수 선언 시작 *******************************************/        	  
 String                                                         RETURN_CD;                                       
-com.sample.dept.vo.SampleDeptVo                                      returnObj;                                       
+net.dstone.sample.dept.vo.SampleDeptVo                                      returnObj;                                       
 /******************************************* 변수 선언 끝 *********************************************/           
                                                                                                                 
 /******************************************* 변수 정의 시작 *******************************************/           
 RETURN_CD           = (String)request.getAttribute("RETURN_CD");                                             
-returnObj           = (com.sample.dept.vo.SampleDeptVo)request.getAttribute("returnObj");                                   
+returnObj           = (net.dstone.sample.dept.vo.SampleDeptVo)request.getAttribute("returnObj");                                   
 /******************************************* 변수 정의 끝 *********************************************/        
 %>                                                                                                              
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">      

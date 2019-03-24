@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>                                            
+                                                                                      
+<!DOCTYPE sqlMap                                                                      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"                              
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">                                   
+                                                                                      
+<sqlMap namespace="COM_SAMPLE_DEPT_CUD_DEPTCUDDAO">                                                       
+                                                                                      
+    <!-- 샘플부서[SAMPLE_DEPT] VO -->                                                                
+    <typeAlias alias="sampleDeptCudVo" type="net.dstone.sample.dept.cud.vo.SampleDeptCudVo"/>                       
+                                                                                   
+    <!--  샘플부서[SAMPLE_DEPT] NEW키값 조회 -->                                                        
+    <select id="selectSampleDeptNewKey" parameterClass="sampleDeptCudVo" resultClass="sampleDeptCudVo">       
+        SELECT                                                                        
+            LPAD(( IF( ISNULL(MAX(DEPT_ID)), 0, MAX(DEPT_ID) )+1), 30, '0') DEPT_ID 
+        FROM                                                                          
+            SAMPLE_DEPT                                                                       
+        WHERE 1=1                                                                     
+    </select>                                                                       
+                                                                                   
+    <!--  샘플부서[SAMPLE_DEPT] 입력 -->                                                             
+    <insert id="insertSampleDept" parameterClass="sampleDeptCudVo" >                             
+        INSERT INTO SAMPLE_DEPT (                                                            
+            <isNotEmpty removeFirstPrepend="true" >
+                <isNotEmpty prepend="," property="DEPT_ID">DEPT_ID</isNotEmpty>
+                <isNotEmpty prepend="," property="DEPT_NAME">DEPT_NAME</isNotEmpty>
+                <isNotEmpty prepend="," property="INPUT_DT">INPUT_DT</isNotEmpty>
+            </isNotEmpty>
+
+        ) VALUES (                                                                    
+            <isNotEmpty removeFirstPrepend="true" >
+                <isNotEmpty prepend="," property="DEPT_ID">#DEPT_ID#</isNotEmpty>
+                <isNotEmpty prepend="," property="DEPT_NAME">#DEPT_NAME#</isNotEmpty>
+                <isNotEmpty prepend="," property="INPUT_DT">STR_TO_DATE( #INPUT_DT#, '%Y%m%d%H%i%s' )</isNotEmpty>
+            </isNotEmpty>
+
+        )                                                                             
+    </insert>                                                                       
+                                                                                   
+    <!--  샘플부서[SAMPLE_DEPT] 수정 -->                                                             
+    <update id="updateSampleDept" parameterClass="sampleDeptCudVo" >                             
+        UPDATE SAMPLE_DEPT                                                                   
+        SET                                                                           
+            <isNotEmpty removeFirstPrepend="true" >
+                <isNotEmpty prepend=","  property="DEPT_ID">
+                DEPT_ID = #DEPT_ID#
+                </isNotEmpty>
+                <isNotEmpty prepend=","  property="DEPT_NAME">
+                DEPT_NAME = #DEPT_NAME#
+                </isNotEmpty>
+                <isNotEmpty prepend=","  property="INPUT_DT">
+                INPUT_DT = STR_TO_DATE( #INPUT_DT#, '%Y%m%d%H%i%s' )
+                </isNotEmpty>
+            </isNotEmpty>
+        WHERE 1=1                                                                        
+            AND DEPT_ID = #DEPT_ID#
+    </update>                                                                       
+                                                                                   
+    <!--  샘플부서[SAMPLE_DEPT] 삭제 -->                                                             
+    <delete id="deleteSampleDept" parameterClass="sampleDeptCudVo" >                             
+        DELETE FROM SAMPLE_DEPT                                                              
+        WHERE 1=1                                                                         
+            AND DEPT_ID = #DEPT_ID#
+    </delete>                                                                       
+                                                                                   
+</sqlMap>                                                                             
+
